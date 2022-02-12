@@ -1,5 +1,5 @@
-function valueIncrease(isIncrease) {
-    const inputValue = document.getElementById('input-id');
+function valueIncrease(name, price, isIncrease) {
+    const inputValue = document.getElementById(name + '-number');
     let inputCount = Number(inputValue.value);
     if (isIncrease) {
         inputCount = inputCount + 1;
@@ -10,16 +10,24 @@ function valueIncrease(isIncrease) {
     }
     inputValue.value = inputCount;
     // up price and down price 
-    const updatePrice = document.getElementById('update-price');
-    updatePrice.innerText = 59 * inputValue.value;
+    const updatePrice = document.getElementById(name + '-price');
+    updatePrice.innerText = price * inputValue.value;
 }
 
-// plus button add event listener 
+// phone add event listener
+document.getElementById('phone-plus').addEventListener('click', function () {
+    valueIncrease('phone', 1219, true);
+});
+document.getElementById('phone-minus').addEventListener('click', function () {
+    valueIncrease('phone', 1219, false);
+});
+// 
+// case plus button add event listener 
 
-document.getElementById('add').addEventListener('click', function () {
-    valueIncrease(true);
+document.getElementById('case-plus').addEventListener('click', function () {
+    valueIncrease('case', 59, true);
 });
 
-document.getElementById('minus').addEventListener('click', function () {
-    valueIncrease(false);
+document.getElementById('case-minus').addEventListener('click', function () {
+    valueIncrease('case', 59, false);
 });
