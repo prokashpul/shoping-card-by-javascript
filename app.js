@@ -35,12 +35,17 @@ document.getElementById('case-minus').addEventListener('click', function () {
 });
 
 // calculate subtotal tax and total
+function getInputValue(name) {
+    const productName = document.getElementById(name + '-number');
+    const productValue = productName.value;
+    return productValue;
+
+}
 
 function calculation() {
-    const phoneNumber = document.getElementById('phone-number');
-    const phonePrice = Number(phoneNumber.value) * 1219;
+    const phonePrice = getInputValue('phone') * 1219;
     const caseNumber = document.getElementById('case-number');
-    const casePrice = Number(caseNumber.value) * 59;
+    const casePrice = getInputValue('case') * 59;
     const subTotal = (document.getElementById('subtotal').innerText = phonePrice + casePrice);
     let tax = (document.getElementById('tax').innerText = parseInt(subTotal * .10));
     document.getElementById('total').innerText = subTotal + tax;
